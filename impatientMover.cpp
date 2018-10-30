@@ -44,9 +44,9 @@ int main()
 
 			cout << endl << n << endl;
 
-			vector<int> vec;	//Stores the current original problem into vector vec
+			vector<int> vec; //Vec will contain the current original problem
 
-			while (getline(inputFile, str))
+			while (getline(inputFile, str))	//Stores the current original problem into vector vec
 			{
 				istringstream str4(str);
 				int num;
@@ -65,14 +65,14 @@ int main()
 				cout << endl;
 			}
 
-			for (j = 0; j < vec.size(); j++)	//This for loops just prints vec to make sure our current original problem was stored into our vector properly
+			for (j = 0; j < vec.size(); j++) //This for loops just prints vec to make sure our current original problem was stored into our vector properly
 			{
 				cout << vec.at(j) << " ";
 			}
 
 			int k;
 			int z;
-			int current;	//The current value we're at in the vector
+			int current; //The current value we're at in the vector
 			int count;
 
 			cout << endl;
@@ -81,21 +81,21 @@ int main()
 
 			for (k = 0; k < n; k++)
 			{
-				vector<int> vecSequence;	//Will store the current possibility into a vector vecSequence
+				vector<int> vecSequence; //Will store the current possibility into a vector vecSequence
 
 				current = vec.at(k);
 
 				vecSequence.push_back(current);	//Pushes the current value into our vector vecSequence
 
-				count = 1;	//Count starts at 1 because we'll always have at least 1 box in our vector as a possibility
+				count = 1; //Count starts at 1 because we'll always have at least 1 box in our vector as a possibility
 
 
-				for (z = k + 1; z < n; z++)	//For all values after our current k
+				for (z = k + 1; z < n; z++) //For all values after our current k
 				{
 					if (vec.at(z) <= current)
 					{
-						current = vec.at(z);	//Update current if vec.at(z) is less than or equal to current
-						vecSequence.push_back(current);	//Pushes the current value into our vector vecSequence
+						current = vec.at(z); //Update current if vec.at(z) is less than or equal to current
+						vecSequence.push_back(current); //Pushes the current value into our vector vecSequence
 						//count++;
 					}
 				}
@@ -105,12 +105,12 @@ int main()
 
 				cout << " " << endl;
 
-				for (j = 0; j < vecSequence.size(); j++)	//This for loop prints the current possibility stored in vecSequence
+				for (j = 0; j < vecSequence.size(); j++) //This for loop prints the current possibility stored in vecSequence
 				{
 					cout << vecSequence.at(j) << " ";
 				}
 
-				vecStore.push_back(vecSequence);	//We would store vecSequence (vector with current possiblity) into vecStore (direct map), which will contain the vectors for all possibilities
+				vecStore.push_back(vecSequence); //We would store vecSequence (vector with current possiblity) into vecStore (direct map), which will contain the vectors for all possibilities
 			}
 			//Here we would need to iterate through our direct map and return the largest count
 		}
