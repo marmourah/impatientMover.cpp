@@ -79,7 +79,7 @@ int main()
 
 			vector<vector<int>> vecStore; //A vector of vectors acting as our direct map
 
-			for (k = 0; k < n; k++)
+			for (k = 0; k < n; k++)	//For all values starting at index 0 of Vec
 			{
 				vector<int> vecSequence; //Will store the current possibility into a vector vecSequence
 
@@ -90,7 +90,7 @@ int main()
 				count = 1; //Count starts at 1 because we'll always have at least 1 box in our vector as a possibility
 
 
-				for (z = k + 1; z < n; z++) //For all values after our current k
+				for (z = k + 1; z < n; z++) //For all values of Vec after our current k
 				{
 					if (vec.at(z) <= current)
 					{
