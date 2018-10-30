@@ -1,6 +1,3 @@
-# impatientMover.cpp
-Algorithms Group Project 2
-
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -22,8 +19,8 @@ int main()
 	}
 
 	else {
-		int instances;
-		int n;
+		int instances;	//The number of problems in the file
+		int n;	//The size of the current problem
 		int i;
 		int j;
 
@@ -47,7 +44,7 @@ int main()
 
 			cout << endl << n << endl;
 
-			vector<int> vec;
+			vector<int> vec;	//Stores the current original problem into vector vec
 
 			while (getline(inputFile, str))
 			{
@@ -68,50 +65,52 @@ int main()
 				cout << endl;
 			}
 
-			for (j = 0; j < vec.size(); j++)
+			for (j = 0; j < vec.size(); j++)	//This for loops just prints vec to make sure our current original problem was stored into our vector properly
 			{
 				cout << vec.at(j) << " ";
 			}
 
 			int k;
 			int z;
-			int current;
+			int current;	//The current value we're at in the vector
 			int count;
 
 			cout << endl;
 
-			vector<vector<int>> vecStore; //Direct Map
+			vector<vector<int>> vecStore; //A vector of vectors acting as our direct map
 
 			for (k = 0; k < n; k++)
 			{
-				vector<int> vecSequence;
-
-				count = 1;
+				vector<int> vecSequence;	//Will store the current possibility into a vector vecSequence
 
 				current = vec.at(k);
 
-				vecSequence.push_back(current);
+				vecSequence.push_back(current);	//Pushes the current value into our vector vecSequence
 
-				for (z = k + 1; z < n; z++)
+				count = 1;	//Count starts at 1 because we'll always have at least 1 box in our vector as a possibility
+
+
+				for (z = k + 1; z < n; z++)	//For all values after our current k
 				{
-					if (vec.at(z) < current) //Less than, or less than/equal to??
+					if (vec.at(z) <= current)
 					{
-						current = vec.at(z);
-						vecSequence.push_back(current);
+						current = vec.at(z);	//Update current if vec.at(z) is less than or equal to current
+						vecSequence.push_back(current);	//Pushes the current value into our vector vecSequence
 						//count++;
 					}
 				}
 				//Here we would store count into our direct map
+
 				//cout << count << endl;
 
 				cout << " " << endl;
 
-				for (j = 0; j < vecSequence.size(); j++)
+				for (j = 0; j < vecSequence.size(); j++)	//This for loop prints the current possibility stored in vecSequence
 				{
 					cout << vecSequence.at(j) << " ";
 				}
 
-				vecStore.push_back(vecSequence);
+				vecStore.push_back(vecSequence);	//We would store vecSequence (vector with current possiblity) into vecStore (direct map), which will contain the vectors for all possibilities
 			}
 			//Here we would need to iterate through our direct map and return the largest count
 		}
