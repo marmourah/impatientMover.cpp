@@ -1,0 +1,177 @@
+#include <algorithm> 
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int naiveMover (int n, int weightdata[])
+{
+	
+	int i, j, a;
+	int testdata[10] ={};
+	int mindata[n];
+	//mindata = {};
+	fill_n(mindata, n, 0);
+	int maxvalue, maxBox = 0;
+		vector<int> vect; //temporary save value that are less
+		vector<int>::const_iterator iter;
+
+	for (a= 1; a <= n; a++)
+	{
+		cout << weightdata[n-a] << " = Original";
+	int minvalue = *std::min_element(weightdata+(n-a),weightdata+n);
+	cout << endl << "min " << minvalue << endl;
+	
+	if ( weightdata [n-a] == minvalue)
+		mindata[(n-a)] += 1;
+	else
+		////////////the recurrence 
+	{
+		for (i=(n-a)+1; i < n; i++)
+		{cout << "&&" << weightdata[n-a] << ">" << weightdata[i] << endl;
+			if (weightdata[n-a] > weightdata[i])
+			{cout << mindata[i] << " > == " <<  maxBox;
+				if(mindata[i] > maxBox)
+					maxBox = mindata[i];//update mx box 
+			}
+		}
+		mindata[n-a] = 1 + maxBox;
+		maxBox = 0;
+/*		maxBox = *std::max_element(mindata,mindata+n);
+		cout << "mas " << maxBox << endl;
+	for (i=(n-a)+1; i < n; i++)
+	{cout << mindata[i] << " == " <<  maxBox << "&&" << weightdata[n-a] << ">" << weightdata[i] << endl;
+		if (mindata[i] == maxBox && weightdata[n-a] > weightdata[i])
+		{
+			mindata[n-a] = 1 + mindata[i];
+			cout << "index " << i << endl;
+		}
+	}
+	
+	for (i=(n-a)+1; i < n; i++)
+	{cout << mindata[i] << " == " <<  maxBox << "&&" << weightdata[n-a] << ">" << weightdata[i] << endl;
+		if (mindata[i] <= maxBox && weightdata[n-a] > weightdata[i])
+		{
+			mindata[n-a] = 1 + mindata[i];
+			cout << "index " << i << endl;
+		}
+	}*/
+		/*
+		for (j=(n-a)+1; j < n; j++)
+		{
+			cout << weightdata [n-a] << ">>" << weightdata[j] << endl;
+			if (weightdata [n-a] > weightdata[j])
+				//vect.push_back(weightdata[j]); //saving all values that are less than the one we are on
+				vect.push_back(n-j);
+			}
+		
+				for (iter = vect.begin(); iter != vect.end(); ++iter)
+			cout << *iter << " , ";
+			cout << endl;
+			
+		maxvalue = *std::max_element(vect.begin(),vect.end());
+		
+		cout << weightdata[n-a] << " = MAX form Vector " << maxvalue << endl ;
+		//if (weightdata[n-a] > maxvalue)
+			//break;
+		//cout << endl << "max " << maxvalue << endl;
+		
+	///
+	for (i=(n-a)+1; i < n; i++)
+	{
+		if (weightdata[i] == maxvalue && weightdata[n-a] > maxvalue)
+		{
+			mindata[n-a] = 1 + mindata[i];
+			cout << "index " << i << endl;
+		}
+	}*/
+
+	}
+vect.clear();
+}
+		for (iter = vect.begin(); iter != vect.end(); ++iter)
+			cout << *iter << ", ";
+			cout << endl;
+
+		cout << endl;
+for (i = 0; i < n; i++)
+	cout << mindata[i] << endl;
+
+return *std::max_element(mindata,mindata+n);
+/*
+//////////first try//////////
+	int i, j;
+	int testdata[10] ={};
+	
+	for (i = 0; i < n; i++)
+	{
+		cout << i << endl;
+		//for (j=n-1; j > n-i; j--)
+		for (j=i+1; j < n; j++)
+		{
+			cout << "value of j: " << j << endl;
+			if (weightdata[i] > weightdata[j])
+			{
+				cout << weightdata[i] << " > " << weightdata[j]<<endl;
+				testdata[i] += 1;
+			}
+		}
+		cout << endl;
+	}
+//for (i = 0; i < n; i++)
+//	cout << weightdata[i] << endl;
+
+for (i = 0; i < n; i++)
+	cout << testdata[i] << endl;
+*/
+
+/*
+//////////first try//////////
+//int max = weightdata[n-1];
+
+	if (n == 1)
+	{
+		cout << "Base Case N =1\n";
+		//return weightdata[0];
+		return 1;
+	}
+	else if (weightdata[n-2] >= weightdata[n-1] )
+	{
+		//max = weightdata[n-2];
+		cout << weightdata[n-2] << ">" << weightdata[n-1];
+		cout << "recursive Happening:  ";
+		cout << n << endl;
+		return 1 + naiveMover(n-1 , weightdata);
+	}
+	cout << "need to do something";
+	cout << "\t n= " << n << "and value= " << weightdata[n];
+	return naiveMover(n-1 , weightdata);
+*/
+}
+
+int main ()
+{
+//int n = 10;		//Number of boxes
+// box arrangement for testing
+//int weightdata [] = {39};
+//int weightdata [] = {8, 39};
+//int weightdata [] = {39, 8};
+//int weightdata [] = {40, 8, 39};
+//int weightdata [] = {28, 40, 8, 39};
+//int weightdata [] = {26, 28, 40, 8, 39};
+//int weightdata [] = {35, 26, 28, 40, 8, 39};
+//int weightdata [] = {18, 35, 26, 28, 40, 8, 39};
+//int weightdata [] = {30, 18, 35, 26, 28, 40, 8, 39};
+//int weightdata [] = {20, 30, 18, 35, 26, 28, 40, 8, 39};
+//int weightdata [] = {29, 1, 8, 3};
+//int weightdata [] = {29, 20, 30, 18, 35, 26, 28, 40, 8, 39};		//4
+int weightdata [] = {38, 35, 45, 39, 23, 16, 26, 28, 20, 5, 8, 17, 12, 10, 13, 42, 6, 34, 33, 37};		//8
+
+cout << "Main Start: \n";
+cout << "size of the array: " <<sizeof(weightdata)/sizeof(int) << endl;
+cout << "\nThe return Final OutPut: " << naiveMover (sizeof(weightdata)/sizeof(int), weightdata) << endl;
+	return 0;
+}
